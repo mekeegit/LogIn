@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "718743031394",
+    "firebase_url": "https://login-a3e10.firebaseio.com",
+    "project_id": "login-a3e10",
+    "storage_bucket": "login-a3e10.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:718743031394:android:6dc18654bb28cb7a",
+        "android_client_info": {
+          "package_name": "com.miki.login"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "718743031394-0iaushlvve31b1f5veqlmsfn6n80neul.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCb9KiPrcp4MQtg7KpEoODIvnTNJtO8dO4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
