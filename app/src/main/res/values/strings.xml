@@ -2,4 +2,8 @@
     <string name="app_name">LogIn</string>
     <string name="registerButton">Register</string>
     <string name="loginButton">login</string>
+    <string name="action">logout</string>
+    <string name="myTitle">Application Name - Login</string>
+    <string name="profileTitle">Application Name</string>
+
 </resources>

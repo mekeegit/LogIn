@@ -5,7 +5,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,15 +33,21 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private FirebaseAuth firebaseAuth;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstaceState){
         super.onCreate(savedInstaceState);
         setContentView(R.layout.activity_login);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle(R.string.myTitle);
+        setSupportActionBar(toolbar);
+
+
 
         mTextView = (TextView) findViewById(R.id.textSignUp);
         mEmail = (EditText) findViewById(R.id.textEmail);
         mPassword = (EditText) findViewById(R.id.textPassword);
-        mButton = (Button) findViewById(R.id.registerButton);
+        mButton = (Button) findViewById(R.id.loginButton);
         mButton.setOnClickListener(this);
         mTextView.setOnClickListener(this);
 
@@ -92,9 +101,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if(v == mButton){
             userLogin();
         }
-        if(v == mTextView){
-            startActivity(new Intent(this, MainActivity.class));
-        }
+        //if(v == mTextView){
+         //   startActivity(new Intent(this, MainActivity.class));
+        //}
     }
 
 }
