@@ -33,9 +33,10 @@ import android.widget.TextView;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
-import com.github.mikephil.charting.data.PieEntry;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -56,10 +57,17 @@ public class ProfileActivity extends AppCompatActivity{
 
     private static final String MIME_TEXT_PLAIN = "text/plain";
     private NfcAdapter mNfcAdapter = null;
+
     PieChart pieChart;
     private TextView mText;
-    private int[] yData = {50,50};
-    private String[] xData = {"red", "green"};
+    //private int[] yData = {50,50};
+    private int i = 0;
+    private int intResult = 0;
+    private float vTag = 10;
+    private int nTags = 10;
+    private ArrayList<Entry> entries = new ArrayList<>();
+    private ArrayList<String> labels = new ArrayList<>();
+    //private String[] xData = {"red", "green"};
     private FloatingActionButton callButton;
 
     @Override
@@ -82,10 +90,10 @@ public class ProfileActivity extends AppCompatActivity{
                     Intent callIntent = new Intent(Intent.ACTION_DIAL);
                     callIntent.setData(Uri.parse("tel:0722679229"));
 
-              //  if (ActivityCompat.checkSelfPermission(ProfileActivity.this,
-                 //       android.Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-               //     return;
-                //}
+                //if (ActivityCompat.checkSelfPermission(ProfileActivity.this,
+                   //     android.Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                   // return;
+               // }
                 startActivity(callIntent);
               }
             }
@@ -135,6 +143,7 @@ public class ProfileActivity extends AppCompatActivity{
         pieChart.setTransparentCircleAlpha(0);
         pieChart.setTransparentCircleRadius(0);
         pieChart.setHoleRadius(0);
+        pieChart.setUsePercentValues(true);
         //pieChart.setDescription("ddd");
         addDataSet();
 
@@ -172,9 +181,26 @@ public class ProfileActivity extends AppCompatActivity{
 
 
 
-
     private void addDataSet() {
 
+
+        if(entries.isEmpty()){
+
+            entries.add(new Entry(100,nTags));
+        }
+        if(intResult != 0) {
+
+            entries.add(new Entry(vTag, nTags-1));
+
+        }
+        PieDataSet dataset = new PieDataSet(entries, "");
+        labels.add("Room "+ nTags);
+
+        PieData data = new PieData(labels, dataset);
+        pieChart.setData(data);
+
+
+/*
         ArrayList<PieEntry> yEntrys = new ArrayList<>();
         ArrayList<String> xEntrys = new ArrayList<>();
         Context context = this;
@@ -183,19 +209,19 @@ public class ProfileActivity extends AppCompatActivity{
             yEntrys.add(new PieEntry(yData[i], i));
         }
         //     for(int i = 1; i< xData.length; i++){
-        //       xEntrys.add(xData[i]);
-        // }
+      //       xEntrys.add(xData[i]);
+       // }
         //creating data set
-       PieDataSet pieDataSet = new PieDataSet(yEntrys, "blablabla");
+        PieDataSet pieDataSet = new PieDataSet(yEntrys, "blablabla");
 
         // pieDataSet.setValueTextSize(20);
         pieDataSet.setColors(new int[] {R.color.complete, R.color.incomplete}, context);
-
+*/
         //create pie data obj
-        PieData pieData = new PieData(pieDataSet);
-        pieData.setDrawValues(false);
-        pieChart.setData(pieData);
-        pieChart.invalidate();
+       // PieData pieData = new PieData(dataset);
+      //  pieData.setDrawValues(false);
+       // pieChart.setData(pieData);
+       // pieChart.invalidate();
     }
 
 
@@ -336,7 +362,6 @@ public class ProfileActivity extends AppCompatActivity{
             // Get the Text
             return new String(payload, languageCodeLength + 1, payload.length - languageCodeLength - 1, textEncoding);
         }
-        
 
 
 
@@ -345,19 +370,14 @@ public class ProfileActivity extends AppCompatActivity{
 
             if(result != null){
 
-                mText.setText("content: "+ result);
-                //int intResult = Integer.parseInt(result);
 
+                intResult = Integer.parseInt(result);
+                mText.setText("content: "+intResult);
+               //intResult = Integer.parseInt(result);
+                addDataSet();
             }
         }
 
-
-
-
-
-
     }
-
-
 
 }
