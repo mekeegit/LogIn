@@ -41,19 +41,6 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="125dp" />
-    <Button
-        android:id="@+id/logoutButton"
-        android:layout_width="135dp"
-        android:layout_height="wrap_content"
-        android:text="Logout"
-        tools:layout_editor_absoluteX="125dp"
-        tools:layout_editor_absoluteY="231dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="38dp"
-        android:layout_marginStart="38dp"
-        android:layout_marginBottom="31dp" />
 
 
     <com.getbase.floatingactionbutton.FloatingActionsMenu
@@ -70,21 +57,25 @@
         android:layout_marginRight="16dp"
         android:layout_marginTop="16dp"
         app:fab_addButtonStrokeVisible="false"
-        app:fab_expandDirection="up">
+        app:fab_expandDirection="up"
+        app:fab_icon="@drawable/ic_report_problem_black_24dp">
 
         <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/firstFab"
+            android:stateListAnimator="@null"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:fab_addButtonColorNormal="@color/white"
-            app:fab_addButtonColorPressed="@color/white_pressed"
-            app:fab_addButtonSize="normal"/>
+            app:fab_addButtonSize="normal"
+            app:fab_icon="@drawable/ic_call_black_24dp"
+            app:backgroundTint="@color/white"/>
 
         <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/secondFab"
+            android:stateListAnimator="@null"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:fab_addButtonColorNormal="@color/white"
-            app:fab_addButtonColorPressed="@color/white_pressed"
-            app:fab_addButtonSize="normal"/>
+            app:fab_addButtonSize="normal"
+            app:backgroundTint="@color/white"/>
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
 
